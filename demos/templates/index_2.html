@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>hello  {{ user.name }}!</h3>
+
+
+<ol>
+    <li>{{ username }}</li>
+    <li>{{ d['username'] }}</li>
+    <li>{{ lst[2] }}</li>
+    <li>{{ d.get('datetime') }}</li>
+</ol>
+
+
+ <pre>================================================</pre>
+    <ul>
+        {% for i in r(lst) %}
+        <li>{{i}}</li>
+        {% end %}
+    </ul>
+<pre>================================================</pre>
+    <ol>
+        {% for k,v in d.items() %}
+        <li>{{k}} == {{v}}</li>
+        {% end %}
+    </ol>
+<pre>================================================</pre>
+    {% if d==None %}
+        hello
+    {% else %}
+        {{r(lst)}}
+    {% end %}
+
+
+<pre>===================转义字符=====================</pre>
+{{str_}}
+{% raw str_%}
+
+</body>
+</html>
