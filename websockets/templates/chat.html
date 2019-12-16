@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <style>
+        #text_filed{
+            width: 500px;
+            height: 300px;
+            border:1px solid gray;
+            overflow: scroll;
+            background: lightcyan;
+        }
+
+        #input{
+            width: 400px;
+            height: 40px;
+        }
+
+        #btn{
+            width: 99px;
+            height: 47px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="text_filed"></div>
+    <input type="text" id="input" /><input type="button" id="btn" onclick="send();" value="发送"/>
+
+    <script>
+        let ws = new WebSocket('ws://192.168.31.213:8888/chat/');
+
+        ws.onmessage = function (ect) {
+            $('#text_filed').append('<p>'+ect.data+'</p>');
+        };
+
+        function send(){
+            let msg = $('#input').val();
+            ws.send(msg);
+            $('#input').val('');
+        }
+    </script>
+
+</body>
+</html>
